@@ -1,0 +1,25 @@
+{
+  "name": "Dokuday",
+  "version": "0.0.0",
+  "authors": [
+    "Bayu Aldi Yansyah <bayualdiyansyah@gmail.com>"
+  ],
+  "description": "awesome print service",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.2.11",
+    "angular-route": "~1.2.11",
+    "bootstrap": "~3.2.0"
+  },
+  "dependencies": {
+  }
+}
