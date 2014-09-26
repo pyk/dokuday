@@ -34,6 +34,12 @@ gulp.task("images", function () {
     .pipe(gulp.dest("./build/assets/images/"))
 })
 
+// svg
+gulp.task("svg", function () {
+  gulp.src("./src/assets/svg/*.*")
+    .pipe(gulp.dest("./build/assets/svg/"))
+})
+
 // rootFile
 var roots = [
   "./src/CNAME",
@@ -118,7 +124,7 @@ gulp.task("watch", function () {
   BUILD
 
  */
-var tasks = ["layout", "views", "images", "rootFile", "less", "app", "libs", "bootstrap"]
+var tasks = ["layout", "views", "images", "rootFile", "less", "app", "libs", "bootstrap", "svg"]
 gulp.task("build", tasks, function() {})
 /*
   Server
