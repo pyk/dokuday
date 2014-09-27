@@ -24,7 +24,7 @@
 
         <!-- Bootstrap -->
         <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="assets/css/main.css">
+        <link rel="stylesheet" href="/assets/css/main.css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,28 +35,36 @@
     </head>
     <body class="kertaskampus-body">
 
-        <div class="kertaskampus-header">
-            <nav class="kertaskampus-navbar navbar" role="navigation">
-                <div class="container">
-                    <div class="navbar-header">
-                        <a class="kertaskampus-brand navbar-brand" href="#">
+        <div class="kertaskampus-header clearfix">
+            <p class="pull-right kertaskampus-btn-login-wrapper">
+                <a href="/app/#/login" class="btn kertaskampus-btn-line kertaskampus-btn-login">Login</a>
+            </p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="kertaskampus-logo-wrapper">
                             <img src="/assets/svg/logo-cl.svg" alt="Kertas Kampus">
-                        </a>
+                        </div>
                     </div>
-
-                    <ul class="kertaskampus-navbar-nav nav navbar-nav navbar-right">
-                        <li><a href="#">Tentang</a></li>
-                        <li><a href="#">Tim</a></li>
-                        <li><a href="#">Bantuan</a></li>
-                        <li><a class="kertaskampus-btn-daftar" href="#">Daftar</a></li>
-                    </ul>
                 </div>
-            </nav>
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="kertaskampus-cta-wrapper">
+                            <h1 class="heading">Print berkas kuliah dimanapun, tanpa antri.</h1>
+                            <p class="sub-heading lead">
+                                Layanan printer yang ditunggu-tunggu oleh mahasiswa. Kertas kampus dibuat oleh mahasiswa
+                                untuk mahasiswa.
+                            </p>
+                            <p>
+                                <a href="/app/#/daftar" class="btn kertaskampus-btn-line kertaskampus-btn-cta">Daftar &amp; Print berkas Sekarang</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
         </div>
         <!-- /kertaskampus-header -->
-        <div class="test">
-            <h1>tests</h1>
-        </div>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
