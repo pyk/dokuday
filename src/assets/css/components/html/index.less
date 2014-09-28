@@ -42,6 +42,7 @@
     font-weight: bold;
     letter-spacing: 1px;
     border: 2px solid;
+    background-color: #FFF;
 
     &:hover {
         color: #FFF;
@@ -49,17 +50,71 @@
         border-radius: 3px;
         border: 2px solid rgba(0, 0, 255, 0.6);
     }
+
+    &:focus {
+        color: rgba(0, 0, 255, 0.6);
+        outline: none;
+    }
 }
 
-a.kertaskampus-btn-cta {
+.kertaskampus-btn-cta {
     padding: 20px 30px;
-
 }
 
 .kertaskampus-btn-login-wrapper {
     margin: 30px;
 }
 
-a.kertaskampus-btn-login {
+.kertaskampus-btn-login {
     padding: 10px 20px;
+}
+
+.kertaskampus-register-dialog.modal-dialog, .kertaskampus-login-dialog.modal-dialog {
+    width: 335px;
+    margin-top: 10%;
+}
+
+.kertaskampus-register-title, .kertaskampus-login-title {
+    text-align: center;
+}
+
+.kertaskampus-btn-g {
+    color: #FFF;
+    border-radius: 3px;
+    transition: background-color .5s ease;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 2px solid #DD4B39;
+    background-color: #DD4B39;
+    width: 100%;
+    padding: 10px 20px;
+
+    &:hover {
+        color: #FFF;
+    }
+    &:focus {
+        color: #FFF;
+    }
+}
+
+.kertaskampus-register-body {
+    margin-top: 10px;
+
+    p {
+        margin-top: 20px;
+        text-align: center;
+    }
+}
+
+p.kertaskampus-register-bantuan, p.kertaskampus-login-bantuan {
+    font-size: 12px;
+    text-align: left;
+    a {
+        color: #8B98A7;
+
+        &:hover {
+            color: #8B98A7;
+        }
+    }
 }
