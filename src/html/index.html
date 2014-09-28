@@ -25,19 +25,69 @@
         <!-- Bootstrap -->
         <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="/assets/css/main.css">
-
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+
+        <!-- Google+ sign in integration -->
+        <meta name="google-signin-clientid" content="843746920747-genmjtj65j7r3jl0lfb9r8djc162qb83.apps.googleusercontent.com" />
+        <meta name="google-signin-scope" content="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/drive" />
+        <meta name="google-signin-requestvisibleactions" content="http://schema.org/AddAction" />
+        <meta name="google-signin-cookiepolicy" content="single_host_origin" />
+        <script type="text/javascript">
+            (function() {
+                var po = document.createElement('script');
+                po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/client:plusone.js?onload=render';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(po, s);
+            })();
+
+            /* Executed when the APIs finish loading */
+            function render() {
+                // Additional params including the callback, the rest of the params will
+                // come from the page-level configuration.
+                var additionalParams = {
+                'callback': signinCallback
+                };
+
+                // Attach a click listener to a button to trigger the flow.
+                var signinButtons = document.getElementsByClassName("signinButton");
+                for (var i = 0; i < signinButtons.length; i++) {
+                    signinButtons[i].addEventListener('click', function() {
+                        gapi.auth.signIn(additionalParams); // Will use page level configuration
+                    });
+                };
+            }
+
+            function signinCallback(authResult) {
+                if (authResult['status']['signed_in']) {
+                    // Redirect to dashboard
+                    window.location = "/dashboard";
+                    console.log('Sign-in state: ' + authResult["status"]);
+                } else {
+                    // Update the app to reflect a signed out user
+                    // Possible error values:
+                    //   "user_signed_out" - User is signed-out
+                    //   "access_denied" - User denied access to your app
+                    //   "immediate_failed" - Could not automatically log in the user
+                    console.log('Sign-in state: ' + authResult['error']);
+                }
+            }
+        </script>
+
     </head>
     <body class="kertaskampus-body">
 
         <div class="kertaskampus-header clearfix">
             <p class="pull-right kertaskampus-btn-login-wrapper">
-                <a href="/app/#/login" class="btn kertaskampus-btn-line kertaskampus-btn-login">Login</a>
+                <button type="button" data-toggle="modal" data-target="#login-modal" href="#" class="btn kertaskampus-btn-line kertaskampus-btn-login">
+                Login
+                </button>
             </p>
             <div class="container">
                 <div class="row">
@@ -56,18 +106,78 @@
                                 untuk mahasiswa.
                             </p>
                             <p>
-                                <a href="/app/#/daftar" class="btn kertaskampus-btn-line kertaskampus-btn-cta">Daftar &amp; Print berkas Sekarang</a>
+                                <button type="button" data-toggle="modal" data-target="#register-modal" href="#" class="btn kertaskampus-btn-line kertaskampus-btn-cta">
+                                Daftar &amp; Mulai print berkas kuliah</button>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
         </div>
         <!-- /kertaskampus-header -->
+
+        <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
+            <div class="kertaskampus-register-dialog modal-dialog">
+                <div class="modal-content">
+                    <div class="kertaskampus-register-header modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="kertaskampus-register-title modal-title heading" id="registerModal">Daftar</h4>
+                    </div>
+                    <div class="kertaskampus-register-body modal-body">
+                        <button type="button" class="kertaskampus-btn-g btn signinButton">
+                        Daftar dengan akun Google+
+                        </button>
+                        <p class="sub-heading">Sudah jadi member? <a href="#" class="signinButton">Login</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <p class="kertaskampus-register-bantuan clearfix">
+                            <a class="sub-heading" target="_blank" href="https://support.google.com/plus/answer/2980762?hl=id">Bantuan</a>
+                            <a class="sub-heading pull-right" href="#" data-toggle="tooltip" title="Khusus untuk mahasiswa Universitas Airlangga">
+                            Register dengan akun Cybercampus
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /modal register -->
+
+        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+            <div class="kertaskampus-login-dialog modal-dialog">
+                <div class="modal-content">
+                    <div class="kertaskampus-login-header modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="kertaskampus-login-title modal-title heading" id="loginModal">Login</h4>
+                    </div>
+                    <div class="kertaskampus-login-body modal-body">
+                        <button type="button" class="kertaskampus-btn-g btn signinButton">
+                        Login dengan akun Google+
+                        </button>
+                    </div>
+                    <div class="modal-footer">
+                        <p class="kertaskampus-login-bantuan clearfix">
+                            <a class="sub-heading" target="_blank" href="https://support.google.com/plus/answer/2980762?hl=id">Bantuan</a>
+                            <a class="sub-heading pull-right" href="#" data-toggle="tooltip" title="Khusus untuk mahasiswa Universitas Airlangga">
+                            Login dengan akun Cybercampus
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /modal login -->
+
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+        <!-- Google+ Sign in integration -->
+        <script type="text/javascript">
+        (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/client:plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })();
+        </script>
     </body>
 </html>
