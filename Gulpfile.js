@@ -78,6 +78,9 @@ gulp.task('less', function () {
 var libs = [
   "./src/libs/jquery/dist/jquery.min.js",
   "./src/libs/angular/angular.min.js",
+  "./src/libs/angular/angular.min.js.map",
+  "./src/libs/angular-route/angular-route.min.js",
+  "./src/libs/angular-route/angular-route.min.js.map",
   ]
 gulp.task("libs", function () {
   gulp.src(libs)
